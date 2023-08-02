@@ -29,22 +29,22 @@ A full copy of the license may be found in the projects root directory
 #include "scheduledIO.h"
 #include "timers.h"
 
-//FuelSchedule fuelSchedule1;
-Schedule fuelSchedule1;
-//FuelSchedule fuelSchedule2;
-Schedule fuelSchedule2;
-//FuelSchedule fuelSchedule3;
-Schedule fuelSchedule3;
-//FuelSchedule fuelSchedule4;
-Schedule fuelSchedule4;
-//FuelSchedule fuelSchedule5;
-Schedule fuelSchedule5;
-//FuelSchedule fuelSchedule6;
-Schedule fuelSchedule6;
-//FuelSchedule fuelSchedule7;
-Schedule fuelSchedule7;
-//FuelSchedule fuelSchedule8;
-Schedule fuelSchedule8;
+FuelSchedule fuelSchedule1;
+//Schedule fuelSchedule1;
+FuelSchedule fuelSchedule2;
+//Schedule fuelSchedule2;
+FuelSchedule fuelSchedule3;
+//Schedule fuelSchedule3;
+FuelSchedule fuelSchedule4;
+//Schedule fuelSchedule4;
+FuelSchedule fuelSchedule5;
+//Schedule fuelSchedule5;
+FuelSchedule fuelSchedule6;
+//Schedule fuelSchedule6;
+FuelSchedule fuelSchedule7;
+//Schedule fuelSchedule7;
+FuelSchedule fuelSchedule8;
+//Schedule fuelSchedule8;
 
 Schedule ignitionSchedule1;
 Schedule ignitionSchedule2;
@@ -1306,7 +1306,7 @@ extern void beginInjectorPriming(void)
 #if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__) || defined(__AVR_ATmega2561__) //AVR chips use the ISR for this
 ISR(TIMER3_COMPA_vect) //fuelSchedules 1 and 5
 #else
-static inline void fuelSchedule1Interrupt(void) //Most ARM chips can simply call a function
+/*static*/ inline void fuelSchedule1Interrupt(void) //Most ARM chips can simply call a function
 #endif
   {
     if (fuelSchedule1.Status == PENDING) //Check to see if this schedule is turn on
@@ -1345,7 +1345,7 @@ static inline void fuelSchedule1Interrupt(void) //Most ARM chips can simply call
 #if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__) || defined(__AVR_ATmega2561__) //AVR chips use the ISR for this
 ISR(TIMER3_COMPB_vect) //fuelSchedule2
 #else
-static inline void fuelSchedule2Interrupt(void) //Most ARM chips can simply call a function
+/*static*/ inline void fuelSchedule2Interrupt(void) //Most ARM chips can simply call a function
 #endif
   {
     if (fuelSchedule2.Status == PENDING) //Check to see if this schedule is turn on
@@ -1384,7 +1384,7 @@ static inline void fuelSchedule2Interrupt(void) //Most ARM chips can simply call
 #if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__) || defined(__AVR_ATmega2561__) //AVR chips use the ISR for this
 ISR(TIMER3_COMPC_vect) //fuelSchedule3
 #else
-static inline void fuelSchedule3Interrupt(void) //Most ARM chips can simply call a function
+/*static*/ inline void fuelSchedule3Interrupt(void) //Most ARM chips can simply call a function
 #endif
   {
     if (fuelSchedule3.Status == PENDING) //Check to see if this schedule is turn on
@@ -1423,7 +1423,7 @@ static inline void fuelSchedule3Interrupt(void) //Most ARM chips can simply call
 #if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__) || defined(__AVR_ATmega2561__) //AVR chips use the ISR for this
 ISR(TIMER4_COMPB_vect) //fuelSchedule4
 #else
-static inline void fuelSchedule4Interrupt(void) //Most ARM chips can simply call a function
+/*static*/ inline void fuelSchedule4Interrupt(void) //Most ARM chips can simply call a function
 #endif
   {
     if (fuelSchedule4.Status == PENDING) //Check to see if this schedule is turn on
@@ -1462,7 +1462,7 @@ static inline void fuelSchedule4Interrupt(void) //Most ARM chips can simply call
 #if defined(CORE_AVR) //AVR chips use the ISR for this
 ISR(TIMER4_COMPC_vect) //fuelSchedule5
 #else
-static inline void fuelSchedule5Interrupt(void) //Most ARM chips can simply call a function
+/*static*/ inline void fuelSchedule5Interrupt(void) //Most ARM chips can simply call a function
 #endif
 {
   if (fuelSchedule5.Status == PENDING) //Check to see if this schedule is turn on
@@ -1495,7 +1495,7 @@ static inline void fuelSchedule5Interrupt(void) //Most ARM chips can simply call
 #if defined(CORE_AVR) //AVR chips use the ISR for this
 ISR(TIMER4_COMPA_vect) //fuelSchedule6
 #else
-static inline void fuelSchedule6Interrupt(void) //Most ARM chips can simply call a function
+/*static*/ inline void fuelSchedule6Interrupt(void) //Most ARM chips can simply call a function
 #endif
 {
   if (fuelSchedule6.Status == PENDING) //Check to see if this schedule is turn on
@@ -1530,7 +1530,7 @@ static inline void fuelSchedule6Interrupt(void) //Most ARM chips can simply call
 #if defined(CORE_AVR) //AVR chips use the ISR for this
 ISR(TIMER5_COMPC_vect) //fuelSchedule7
 #else
-static inline void fuelSchedule7Interrupt(void) //Most ARM chips can simply call a function
+/*static*/ inline void fuelSchedule7Interrupt(void) //Most ARM chips can simply call a function
 #endif
 {
   if (fuelSchedule7.Status == PENDING) //Check to see if this schedule is turn on
@@ -1565,7 +1565,7 @@ static inline void fuelSchedule7Interrupt(void) //Most ARM chips can simply call
 #if defined(CORE_AVR) //AVR chips use the ISR for this
 ISR(TIMER5_COMPB_vect) //fuelSchedule8
 #else
-static inline void fuelSchedule8Interrupt(void) //Most ARM chips can simply call a function
+/*static*/ inline void fuelSchedule8Interrupt(void) //Most ARM chips can simply call a function
 #endif
 {
   if (fuelSchedule8.Status == PENDING) //Check to see if this schedule is turn on
@@ -1600,7 +1600,7 @@ static inline void fuelSchedule8Interrupt(void) //Most ARM chips can simply call
 #if defined(CORE_AVR) //AVR chips use the ISR for this
 ISR(TIMER5_COMPA_vect) //ignitionSchedule1
 #else
-static inline void ignitionSchedule1Interrupt(void) //Most ARM chips can simply call a function
+/*static*/ inline void ignitionSchedule1Interrupt(void) //Most ARM chips can simply call a function
 #endif
   {
     if (ignitionSchedule1.Status == PENDING) //Check to see if this schedule is turn on
@@ -1656,7 +1656,7 @@ static inline void ignitionSchedule1Interrupt(void) //Most ARM chips can simply 
 #if defined(CORE_AVR) //AVR chips use the ISR for this
 ISR(TIMER5_COMPB_vect) //ignitionSchedule2
 #else
-static inline void ignitionSchedule2Interrupt(void) //Most ARM chips can simply call a function
+/*static*/ inline void ignitionSchedule2Interrupt(void) //Most ARM chips can simply call a function
 #endif
   {
     if (ignitionSchedule2.Status == PENDING) //Check to see if this schedule is turn on
@@ -1714,7 +1714,7 @@ static inline void ignitionSchedule2Interrupt(void) //Most ARM chips can simply 
 #if defined(CORE_AVR) //AVR chips use the ISR for this
 ISR(TIMER5_COMPC_vect) //ignitionSchedule3
 #else
-static inline void ignitionSchedule3Interrupt(void) //Most ARM chips can simply call a function
+/*static*/ inline void ignitionSchedule3Interrupt(void) //Most ARM chips can simply call a function
 #endif
   {
     if (ignitionSchedule3.Status == PENDING) //Check to see if this schedule is turn on
@@ -1770,7 +1770,7 @@ static inline void ignitionSchedule3Interrupt(void) //Most ARM chips can simply 
 #if defined(CORE_AVR) //AVR chips use the ISR for this
 ISR(TIMER4_COMPA_vect) //ignitionSchedule4
 #else
-static inline void ignitionSchedule4Interrupt(void) //Most ARM chips can simply call a function
+/*static*/ inline void ignitionSchedule4Interrupt(void) //Most ARM chips can simply call a function
 #endif
   {
     if (ignitionSchedule4.Status == PENDING) //Check to see if this schedule is turn on
@@ -1826,7 +1826,7 @@ static inline void ignitionSchedule4Interrupt(void) //Most ARM chips can simply 
 #if defined(CORE_AVR) //AVR chips use the ISR for this
 ISR(TIMER4_COMPC_vect) //ignitionSchedule5
 #else
-static inline void ignitionSchedule5Interrupt(void) //Most ARM chips can simply call a function
+/*static*/ inline void ignitionSchedule5Interrupt(void) //Most ARM chips can simply call a function
 #endif
   {
     if (ignitionSchedule5.Status == PENDING) //Check to see if this schedule is turn on
@@ -1882,7 +1882,7 @@ static inline void ignitionSchedule5Interrupt(void) //Most ARM chips can simply 
 #if defined(CORE_AVR) //AVR chips use the ISR for this
 ISR(TIMER4_COMPB_vect) //ignitionSchedule6
 #else
-static inline void ignitionSchedule6Interrupt(void) //Most ARM chips can simply call a function
+/*static*/ inline void ignitionSchedule6Interrupt(void) //Most ARM chips can simply call a function
 #endif
   {
     if (ignitionSchedule6.Status == PENDING) //Check to see if this schedule is turn on
@@ -1938,7 +1938,7 @@ static inline void ignitionSchedule6Interrupt(void) //Most ARM chips can simply 
 #if defined(CORE_AVR) //AVR chips use the ISR for this
 ISR(TIMER3_COMPC_vect) //ignitionSchedule6
 #else
-static inline void ignitionSchedule7Interrupt(void) //Most ARM chips can simply call a function
+/*static*/ inline void ignitionSchedule7Interrupt(void) //Most ARM chips can simply call a function
 #endif
   {
     if (ignitionSchedule7.Status == PENDING) //Check to see if this schedule is turn on
@@ -1994,7 +1994,7 @@ static inline void ignitionSchedule7Interrupt(void) //Most ARM chips can simply 
 #if defined(CORE_AVR) //AVR chips use the ISR for this
 ISR(TIMER3_COMPB_vect) //ignitionSchedule8
 #else
-static inline void ignitionSchedule8Interrupt(void) //Most ARM chips can simply call a function
+/*static*/ inline void ignitionSchedule8Interrupt(void) //Most ARM chips can simply call a function
 #endif
   {
     if (ignitionSchedule8.Status == PENDING) //Check to see if this schedule is turn on
@@ -2047,7 +2047,7 @@ static inline void ignitionSchedule8Interrupt(void) //Most ARM chips can simply 
 #endif
 
 #if KNK_CHANNELS >= 1
-static inline void knockSchedule1Interrupt(void) //Most ARM chips can simply call a function
+/*static*/ inline void knockSchedule1Interrupt(void) //Most ARM chips can simply call a function
   {
     if (knockSchedule1.Status == PENDING) //Check to see if this schedule is turn on
     {
@@ -2086,7 +2086,7 @@ static inline void knockSchedule1Interrupt(void) //Most ARM chips can simply cal
 #endif
 
 #if KNK_CHANNELS >= 2
-static inline void knockSchedule2Interrupt(void) //Most ARM chips can simply call a function
+/*static*/ inline void knockSchedule2Interrupt(void) //Most ARM chips can simply call a function
   {
     if (knockSchedule2.Status == PENDING) //Check to see if this schedule is turn on
     {
@@ -2125,7 +2125,7 @@ static inline void knockSchedule2Interrupt(void) //Most ARM chips can simply cal
 #endif
 
 #if KNK_CHANNELS >= 3
-static inline void knockSchedule3Interrupt(void) //Most ARM chips can simply call a function
+/*static*/ inline void knockSchedule3Interrupt(void) //Most ARM chips can simply call a function
   {
     if (knockSchedule3.Status == PENDING) //Check to see if this schedule is turn on
     {
@@ -2164,7 +2164,7 @@ static inline void knockSchedule3Interrupt(void) //Most ARM chips can simply cal
 #endif
 
 #if KNK_CHANNELS >= 4
-static inline void knockSchedule4Interrupt(void) //Most ARM chips can simply call a function
+/*static*/ inline void knockSchedule4Interrupt(void) //Most ARM chips can simply call a function
   {
     if (knockSchedule4.Status == PENDING) //Check to see if this schedule is turn on
     {

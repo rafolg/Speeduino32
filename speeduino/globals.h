@@ -229,7 +229,7 @@
 #define BIT_STATUS4_BURNPENDING   4
 #define BIT_STATUS4_WSER          5 //Wireless/wired serial status
 #define BIT_STATUS4_STAGING_ACTIVE 6
-#define BIT_STATUS4_UNUSED8       7
+#define BIT_STATUS4_COMMS_COMPAT  7
 
 #define BIT_AIRCON_REQUEST        0 //Indicates whether the A/C button is pressed
 #define BIT_AIRCON_COMPRESSOR     1 //Indicates whether the A/C compressor is running
@@ -453,17 +453,17 @@ extern const char TSfirmwareVersion[] PROGMEM;
 
 extern const byte data_structure_version; //This identifies the data structure when reading / writing. Now in use: CURRENT_DATA_VERSION (migration on-the fly) ?
 
-extern struct table3d24RpmLoad fuelTable; //24x24 fuel map
-extern struct table3d16RpmLoad fuelTable2; //24x24 fuel map
-extern struct table3d16RpmLoad ignitionTable; //24x24 ignition map
-extern struct table3d16RpmLoad ignitionTable2; //24x24 ignition map
-extern struct table3d16RpmLoad afrTable; //24x24 afr target map
+extern struct table3d16RpmLoad fuelTable; //16x16 fuel map
+extern struct table3d16RpmLoad fuelTable2; //16x16 fuel map
+extern struct table3d16RpmLoad ignitionTable; //16x16 ignition map
+extern struct table3d16RpmLoad ignitionTable2; //16x16 ignition map
+extern struct table3d16RpmLoad afrTable; //16x16 afr target map
 extern struct table3d8RpmLoad stagingTable; //8x8 fuel staging table
-extern struct table3d16RpmLoad boostTable; //16x16 boost map
+extern struct table3d8RpmLoad boostTable; //8x8 boost map
 extern struct table3d8RpmLoad boostTableLookupDuty; //8x8 boost map
-extern struct table3d16RpmLoad vvtTable; //16x16 vvt map
-extern struct table3d16RpmLoad vvt2Table; //16x16 vvt map
-extern struct table3d16RpmLoad wmiTable; //16x16 wmi map
+extern struct table3d8RpmLoad vvtTable; //8x8 vvt map
+extern struct table3d8RpmLoad vvt2Table; //8x8 vvt map
+extern struct table3d8RpmLoad wmiTable; //8x8 wmi map
 
 typedef table3d6RpmLoad trimTable3d; 
 
@@ -559,15 +559,6 @@ extern byte triggerInterrupt3;
 
 //These need to be here as they are used in both speeduino.ino and scheduler.ino
 extern byte channelInjEnabled;
-
-extern int fuel1EndAngle;
-extern int fuel2EndAngle;
-extern int fuel3EndAngle;
-extern int fuel4EndAngle;
-extern int fuel5EndAngle;
-extern int fuel6EndAngle;
-extern int fuel7EndAngle;
-extern int fuel8EndAngle;
 
 extern int ignition1EndAngle;
 extern int ignition2EndAngle;

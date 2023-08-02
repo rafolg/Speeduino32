@@ -25,7 +25,7 @@
 
 // Page sizes as defined in the .ini file
 //                                                       1    2    3    4    5    6    7    8    9    10   11   12   13   14   15
-constexpr const uint16_t PROGMEM ini_page_sizes[] = { 0, 128, 624, 288, 128, 288, 128, 656, 384, 192, 192, 288, 600, 128, 288, 256 };
+constexpr const uint16_t PROGMEM ini_page_sizes[] = { 0, 128, 288, 288, 128, 288, 128, 240, 384, 192, 192, 288, 184, 128, 288, 256 };
 
 // ========================= Table size calculations =========================
 // Note that these should be computed at compile time, assuming the correct

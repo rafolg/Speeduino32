@@ -136,50 +136,50 @@ inline void refreshKnockSchedule4(unsigned long timeToEnd) __attribute__((always
 
 //The ARM cores use separate functions for their ISRs
 #if defined(ARDUINO_ARCH_STM32) || defined(CORE_TEENSY)
-  static inline void fuelSchedule1Interrupt(void);
-  static inline void fuelSchedule2Interrupt(void);
-  static inline void fuelSchedule3Interrupt(void);
-  static inline void fuelSchedule4Interrupt(void);
+  /*static*/ inline void fuelSchedule1Interrupt(void);
+  /*static*/ inline void fuelSchedule2Interrupt(void);
+  /*static*/ inline void fuelSchedule3Interrupt(void);
+  /*static*/ inline void fuelSchedule4Interrupt(void);
 #if (INJ_CHANNELS >= 5)
-  static inline void fuelSchedule5Interrupt(void);
+  /*static*/ inline void fuelSchedule5Interrupt(void);
 #endif
 #if (INJ_CHANNELS >= 6)
-  static inline void fuelSchedule6Interrupt(void);
+  /*static*/ inline void fuelSchedule6Interrupt(void);
 #endif
 #if (INJ_CHANNELS >= 7)
-  static inline void fuelSchedule7Interrupt(void);
+  /*static*/ inline void fuelSchedule7Interrupt(void);
 #endif
 #if (INJ_CHANNELS >= 8)
-  static inline void fuelSchedule8Interrupt(void);
+  /*static*/ inline void fuelSchedule8Interrupt(void);
 #endif
 #if (IGN_CHANNELS >= 1)
-  static inline void ignitionSchedule1Interrupt(void);
+  /*static*/ inline void ignitionSchedule1Interrupt(void);
 #endif
 #if (IGN_CHANNELS >= 2)
-  static inline void ignitionSchedule2Interrupt(void);
+  /*static*/ inline void ignitionSchedule2Interrupt(void);
 #endif
 #if (IGN_CHANNELS >= 3)
-  static inline void ignitionSchedule3Interrupt(void);
+  /*static*/ inline void ignitionSchedule3Interrupt(void);
 #endif
 #if (IGN_CHANNELS >= 4)
-  static inline void ignitionSchedule4Interrupt(void);
+  /*static*/ inline void ignitionSchedule4Interrupt(void);
 #endif
 #if (IGN_CHANNELS >= 5)
-  static inline void ignitionSchedule5Interrupt(void);
+  /*static*/ inline void ignitionSchedule5Interrupt(void);
 #endif
 #if (IGN_CHANNELS >= 6)
-  static inline void ignitionSchedule6Interrupt(void);
+  /*static*/ inline void ignitionSchedule6Interrupt(void);
 #endif
 #if (IGN_CHANNELS >= 7)
-  static inline void ignitionSchedule7Interrupt(void);
+  /*static*/ inline void ignitionSchedule7Interrupt(void);
 #endif
 #if (IGN_CHANNELS >= 8)
-  static inline void ignitionSchedule8Interrupt(void);
+  /*static*/ inline void ignitionSchedule8Interrupt(void);
 #endif
-  static inline void knockSchedule1Interrupt(void);
-  static inline void knockSchedule2Interrupt(void);
-  static inline void knockSchedule3Interrupt(void);
-  static inline void knockSchedule4Interrupt(void);
+  /*static*/ inline void knockSchedule1Interrupt(void);
+  /*static*/ inline void knockSchedule2Interrupt(void);
+  /*static*/ inline void knockSchedule3Interrupt(void);
+  /*static*/ inline void knockSchedule4Interrupt(void);
 #endif
 /** Schedule statuses.
  * - OFF - Schedule turned off and there is no scheduled plan
@@ -228,9 +228,10 @@ struct FuelSchedule {
 
   COMPARE_TYPE nextStartCompare;
   COMPARE_TYPE nextEndCompare;
+  volatile byte scheduleFlags;
   volatile bool hasNextSchedule = false;
 };
-/** Ignition schedule.
+/** Knock schedule.
  */
 struct KnockSchedule {
   volatile unsigned long duration;///< Scheduled duration (uS ?)
@@ -252,22 +253,22 @@ struct KnockSchedule {
 //Schedule *timer3Bqueue[4];
 //Schedule *timer3Cqueue[4];
 
-//extern FuelSchedule fuelSchedule1;
-extern Schedule fuelSchedule1;
-//extern FuelSchedule fuelSchedule2;
-extern Schedule fuelSchedule2;
-//extern FuelSchedule fuelSchedule3;
-extern Schedule fuelSchedule3;
-//extern FuelSchedule fuelSchedule4;
-extern Schedule fuelSchedule4;
-//extern FuelSchedule fuelSchedule5;
-extern Schedule fuelSchedule5;
-//extern FuelSchedule fuelSchedule6;
-extern Schedule fuelSchedule6;
-//extern FuelSchedule fuelSchedule7;
-extern Schedule fuelSchedule7;
-//extern FuelSchedule fuelSchedule8;
-extern Schedule fuelSchedule8;
+extern FuelSchedule fuelSchedule1;
+//extern Schedule fuelSchedule1;
+extern FuelSchedule fuelSchedule2;
+//extern Schedule fuelSchedule2;
+extern FuelSchedule fuelSchedule3;
+//extern Schedule fuelSchedule3;
+extern FuelSchedule fuelSchedule4;
+//extern Schedule fuelSchedule4;
+extern FuelSchedule fuelSchedule5;
+//extern Schedule fuelSchedule5;
+extern FuelSchedule fuelSchedule6;
+//extern Schedule fuelSchedule6;
+extern FuelSchedule fuelSchedule7;
+//extern Schedule fuelSchedule7;
+extern FuelSchedule fuelSchedule8;
+//extern Schedule fuelSchedule8;
 
 extern Schedule ignitionSchedule1;
 extern Schedule ignitionSchedule2;

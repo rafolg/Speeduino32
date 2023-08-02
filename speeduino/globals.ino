@@ -7,17 +7,17 @@ const char TSfirmwareVersion[] PROGMEM = "Speeduino";
 
 const byte data_structure_version = 2; //This identifies the data structure when reading / writing. (outdated ?)
 
-struct table3d24RpmLoad fuelTable; ///< 24x24 fuel map
-struct table3d16RpmLoad fuelTable2; ///< 24x24 fuel map
-struct table3d16RpmLoad ignitionTable; ///< 24x24 ignition map
-struct table3d16RpmLoad ignitionTable2; ///< 24x24 ignition map
-struct table3d16RpmLoad afrTable; ///< 24x24 afr target map
+struct table3d16RpmLoad fuelTable; ///< 16x16 fuel map
+struct table3d16RpmLoad fuelTable2; ///< 16x16 fuel map
+struct table3d16RpmLoad ignitionTable; ///< 16x16 ignition map
+struct table3d16RpmLoad ignitionTable2; ///< 16x16 ignition map
+struct table3d16RpmLoad afrTable; ///< 16x16 afr target map
 struct table3d8RpmLoad stagingTable; ///< 8x8 fuel staging table
-struct table3d16RpmLoad boostTable; ///< 16x16 boost map
+struct table3d8RpmLoad boostTable; ///< 8x8 boost map
 struct table3d8RpmLoad boostTableLookupDuty; ///< 8x8 boost map lookup table
-struct table3d16RpmLoad vvtTable; ///< 16x16 vvt map
-struct table3d16RpmLoad vvt2Table; ///< 16x16 vvt2 map
-struct table3d16RpmLoad wmiTable; ///< 16x16 wmi map
+struct table3d8RpmLoad vvtTable; ///< 8x8 vvt map
+struct table3d8RpmLoad vvt2Table; ///< 8x8 vvt2 map
+struct table3d8RpmLoad wmiTable; ///< 8x8 wmi map
 trimTable3d trim1Table; ///< 6x6 Fuel trim 1 map
 trimTable3d trim2Table; ///< 6x6 Fuel trim 2 map
 trimTable3d trim3Table; ///< 6x6 Fuel trim 3 map
@@ -105,15 +105,6 @@ volatile PINMASK_TYPE triggerSec_pin_mask;
 
 /// These need to be here as they are used in both speeduino.ino and scheduler.ino
 byte channelInjEnabled = 0;
-
-int fuel1EndAngle = 0;
-int fuel2EndAngle = 0;
-int fuel3EndAngle = 0;
-int fuel4EndAngle = 0;
-int fuel5EndAngle = 0;
-int fuel6EndAngle = 0;
-int fuel7EndAngle = 0;
-int fuel8EndAngle = 0;
 
 int ignition1EndAngle = 0;
 int ignition2EndAngle = 0;

@@ -11,6 +11,7 @@
 #include "utilities.h"
 #include "scheduledIO.h"
 #include "scheduler.h"
+#include "schedule_calcs.h"
 #include "auxiliaries.h"
 #include "sensors.h"
 #include "decoders.h"
@@ -108,6 +109,7 @@ void initialiseAll(void)
     initRTC();
     initSD();
   #endif
+    
     pinMode(21, INPUT);
     int USBpinState = digitalRead(21); //Sense whether a USB connection is present or not
     if ( (USBpinState == HIGH) || (configPage9.enableWserial < 1))
@@ -117,7 +119,7 @@ void initialiseAll(void)
     }
     else if ((USBpinState == LOW) && (configPage9.enableWserial > 0))
     {
-      BTserial.begin(1728000); //To connect to ESP8266EX UART is 20Mhz (ESP's Xtal) x 115200 = 2304000
+      BTserial.begin(2304000); //To connect to ESP8266EX UART is 20Mhz (ESP's Xtal) x 115200 = 2304000// 1728000
       BIT_SET(currentStatus.status4, BIT_STATUS4_WSER);
       char wifiSettings[46];
       char wifiSEP[] = ":";
@@ -148,6 +150,7 @@ void initialiseAll(void)
       strcat(wifiSettings, wifiSEP);
       BTserial.write(wifiSettings);
     }
+    
     //Repoint the 2D table structs to the config pages that were just loaded
     taeTable.valueSize = SIZE_BYTE; //Set this table to use byte values
     taeTable.axisSize = SIZE_BYTE; //Set this table to use byte axis bins
@@ -491,15 +494,6 @@ void initialiseAll(void)
     channelInjEnabled = 0; // Disable all injectors
     BIT_SET(channelInjEnabled, INJ1_CMD_BIT);
 
-    fuel1EndAngle = 0;
-    fuel2EndAngle = 0;
-    fuel3EndAngle = 0;
-    fuel4EndAngle = 0;
-    fuel5EndAngle = 0;
-    fuel6EndAngle = 0;
-    fuel7EndAngle = 0;
-    fuel8EndAngle = 0;
-
     ignition1EndAngle = 0;
     ignition2EndAngle = 0;
     ignition3EndAngle = 0;
@@ -508,7 +502,6 @@ void initialiseAll(void)
     ignition6EndAngle = 0;
     ignition7EndAngle = 0;
     ignition8EndAngle = 0;
-
     
     knock1EndAngle = 0;
     knock2EndAngle = 0;

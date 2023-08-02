@@ -8,8 +8,11 @@
 This project is my personal flavour of the official Speeduino project that was originally incepted by noisymime. My aim is to extract as much of the available processing power of the Teensy 4.1 board by adding the following features:
 
 Knock per cylinder - currently enbled for 4 cyl applications but can be expanded to 8
+
 Larger tables
+
 All axuliary functions can run at the same time: idle, boost, vvt, wmi, pwmFan
+
 WiFi comms
 
 More to come
